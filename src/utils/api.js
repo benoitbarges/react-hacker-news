@@ -5,7 +5,7 @@ export const fetchTopPosts = () => {
     .then(ids => Promise.all(ids.map(id => fetchPost(id))))
 }
 
-export const fetchPost = (postId) => {
+const fetchPost = (postId) => {
   return fetch(`https://hacker-news.firebaseio.com/v0/item/${postId}.json?print=pretty`)
     .then(response => response.json())
     .then(post => post)

@@ -1,5 +1,5 @@
 import React from 'react'
-import { fetchTopPosts, fetchPost } from '../utils/api'
+import { fetchTopPosts } from '../utils/api'
 import Post from './Post'
 
 export default class Posts extends React.Component {
@@ -28,10 +28,16 @@ export default class Posts extends React.Component {
         <ul>
           {posts.map((post) => {
             return (
-              <pre>{JSON.stringify(posts, null, 2)}</pre>
+              <li key={post.id} className='post'>
+                <Post
+                  title={post.title}
+                  url={post.url}
+                />
+              </li>
             )
           })}
         </ul>
+          <pre>{JSON.stringify(posts, null, 2)}</pre>
       </div>
     )
   }

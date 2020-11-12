@@ -10,11 +10,11 @@ export default function Post({ author, title, created, comments, url, setUser}) 
 
   return (
     <div className='post'>
-      <a href={url} className='link' onClick={setUser}>
+      <a href={url} className='link'>
         {title}
       </a>
       <div className='meta-info-light'>
-        <span>by <a href="#">{author}</a></span>
+        <span>by <a href="#" onClick={setUser}>{author}</a></span>
         <span> on {date} </span>
         <span>with {comments} comments</span>
       </div>

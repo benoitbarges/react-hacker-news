@@ -15,7 +15,7 @@ export default class Posts extends React.Component {
   }
 
   componentDidMount() {
-    fetchTopPosts().then(data => this.setState({ posts: data, loading: false }))
+    fetchTopPosts().then(data => this.setState({ posts: data, loading: false, user: null }))
   }
 
   render() {
@@ -41,6 +41,7 @@ export default class Posts extends React.Component {
                   author={post.by}
                   comments={post.descendants}
                   created={post.time}
+                  setUser={() => this.setState({ user: post.by, posts: null })}
                 />
               </li>
             )

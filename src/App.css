@@ -81,3 +81,11 @@ li {
   margin: 10px 0;
   border-radius: 5px;
 }
+
+.comment p {
+  color: black;
+}
+
+.center-text {
+  text-align: center;
+}

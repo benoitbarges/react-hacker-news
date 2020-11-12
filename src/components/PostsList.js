@@ -2,7 +2,16 @@ import React from 'react'
 import PostInfos from './PostInfos'
 import PropTypes from 'prop-types'
 
-export default function PostsList({ posts, setUser = null}) {
+export default function PostsList({ posts }) {
+
+  if (posts.length === 0) {
+      return (
+        <h2 className='center-text'>
+          This user doesn't have any post
+        </h2>
+      )
+    }
+
   return (
     <ul>
       {posts.map((post) => {

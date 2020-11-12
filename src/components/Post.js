@@ -6,6 +6,9 @@ export default function Post({ author, title, created, comments, url}) {
       <a href={url} className='link'>
         {title}
       </a>
+      <div className='meta-info-light'>
+        <span>by <a href="">{author}</a></span>
+      </div>
     </div>
   )
 }

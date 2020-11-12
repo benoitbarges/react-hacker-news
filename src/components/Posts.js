@@ -32,6 +32,7 @@ export default class Posts extends React.Component {
                 <Post
                   title={post.title}
                   url={post.url}
+                  author={post.by}
                 />
               </li>
             )

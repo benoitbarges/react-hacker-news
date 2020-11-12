@@ -10,3 +10,9 @@ const fetchPost = (postId) => {
     .then(response => response.json())
     .then(post => post)
 }
+
+export const fetchUser = (user) => {
+  return fetch(`https://hacker-news.firebaseio.com/v0/item/${user}.json?print=pretty`)
+    .then(response => response.json())
+    .then(user => user)
+}

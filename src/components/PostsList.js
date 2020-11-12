@@ -1,7 +1,7 @@
 import React from 'react'
 import Post from './Post'
 
-export default function PostsList({ posts, setUser}) {
+export default function PostsList({ posts, setUser = null}) {
   return (
     <ul>
       {posts.map((post) => {

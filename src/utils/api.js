@@ -11,6 +11,12 @@ const fetchPost = (postId) => {
     .then(post => post)
 }
 
+export const fetchPosts = (posts) => {
+  return Promise.all(posts.map(post => fetchPost(post)))
+    .then(data => data.filter(({ type }) => type === 'story'))
+    .then(data => data.filter(({ dead }) => dead !== true))
+}
+
 export const fetchUser = (user) => {
   return fetch(`https://hacker-news.firebaseio.com/v0/user/${user}.json?print=pretty`)
     .then(response => response.json())

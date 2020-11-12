@@ -7,7 +7,7 @@ export default class Posts extends React.Component {
     super(props)
 
     this.state = {
-      posts: [],
+      posts: null,
       loading: true
     }
   }
@@ -33,6 +33,8 @@ export default class Posts extends React.Component {
                   title={post.title}
                   url={post.url}
                   author={post.by}
+                  comments={post.descendants}
+                  created={post.time}
                 />
               </li>
             )

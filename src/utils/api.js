@@ -12,7 +12,7 @@ const fetchPost = (postId) => {
 }
 
 export const fetchUser = (user) => {
-  return fetch(`https://hacker-news.firebaseio.com/v0/item/${user}.json?print=pretty`)
+  return fetch(`https://hacker-news.firebaseio.com/v0/user/${user}.json?print=pretty`)
     .then(response => response.json())
     .then(user => user)
 }

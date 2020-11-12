@@ -10,7 +10,6 @@ export default function Post({ author, title, created, comments, url, setUser}) 
         {title}
       </a>
       <div className='meta-info-light'>
-        <span>by <a href="#" onClick={setUser}>{author}</a></span>
         <Link
           to={{
             pathname: `/user`,
@@ -31,6 +30,5 @@ Post.propTypes = {
   title: PropTypes.string.isRequired,
   created: PropTypes.number.isRequired,
   comments: PropTypes.number.isRequired,
-  url: PropTypes.string.isRequired,
-  setUser: PropTypes.func.isRequired
+  url: PropTypes.string.isRequired
 }

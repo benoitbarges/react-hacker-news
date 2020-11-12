@@ -1,4 +1,4 @@
-export const fetchTopPosts = (type) => {
+export const fetchMainPosts = (type) => {
   return fetch(`https://hacker-news.firebaseio.com/v0/${type}stories.json?print=pretty`)
     .then(response => response.json())
     .then(ids => ids.slice(0, 10))

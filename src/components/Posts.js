@@ -1,7 +1,6 @@
 import React from 'react'
-import { fetchTopPosts, fetchUser } from '../utils/api'
+import { fetchMainPosts } from '../utils/api'
 import PostsList from './PostsList'
-import User from './User'
 import Loading from './Loading'
 
 export default class Posts extends React.Component {
@@ -11,16 +10,11 @@ export default class Posts extends React.Component {
     this.state = {
       posts: null,
       loading: true,
-      user: null
     }
   }
 
   componentDidMount() {
-    fetchTopPosts(this.props.type).then(data => this.setState({ posts: data, loading: false, user: null }))
-  }
-
-  setUser = (user) => {
-    fetchUser(user).then(data => this.setState({ posts: null, loading: false, user: data }))
+    fetchMainPosts(this.props.type).then(data => this.setState({ posts: data, loading: false }))
   }
 
   render() {
@@ -30,20 +24,9 @@ export default class Posts extends React.Component {
       return <Loading />
     }
 
-    if (user) {
-      return (
-        <User
-          username={user.id}
-          created={user.created}
-          karma={user.karma}
-          posts={user.submitted}
-        />
-      )
-    }
-
     return (
       <div>
-        <PostsList posts={posts} setUser={(user) => this.setUser(user)} />
+        <PostsList posts={posts}/>
       </div>
     )
   }

@@ -14,7 +14,6 @@ export default function PostsList({ posts, setUser = null}) {
               author={post.by}
               comments={post.descendants}
               created={post.time}
-              setUser={() => setUser(post.by)}
             />
           </li>
         )

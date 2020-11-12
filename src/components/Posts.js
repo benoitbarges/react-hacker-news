@@ -1,5 +1,5 @@
 import React from 'react'
-import { fetchTopPosts } from '../utils/api'
+import { fetchTopPosts, fetchUser } from '../utils/api'
 import Post from './Post'
 import User from './User'
 
@@ -18,6 +18,10 @@ export default class Posts extends React.Component {
     fetchTopPosts().then(data => this.setState({ posts: data, loading: false, user: null }))
   }
 
+  setUser = (user) => {
+    fetchUser(user).then(data => this.setState({ posts: null, loading: false, user: data }))
+  }
+
   render() {
     const { posts, loading } = this.state
 
@@ -26,7 +30,15 @@ export default class Posts extends React.Component {
     }
 
     if (this.state.user) {
-      return <User />
+      const { user } = this.state
+      return (
+        <User
+          username={user.id}
+          created={user.created}
+          karma={user.karma}
+          posts={user.submitted}
+        />
+      )
     }
 
     return (
@@ -41,7 +53,7 @@ export default class Posts extends React.Component {
                   author={post.by}
                   comments={post.descendants}
                   created={post.time}
-                  setUser={() => this.setState({ user: post.by, posts: null })}
+                  setUser={() => this.setUser(post.by)}
                 />
               </li>
             )

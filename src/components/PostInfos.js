@@ -17,5 +17,6 @@ PostInfos.propTypes = {
   author: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   created: PropTypes.number.isRequired,
-  comments: PropTypes.number
+  comments: PropTypes.number,
+  id: PropTypes.number
 }

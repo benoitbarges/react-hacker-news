@@ -2,6 +2,7 @@ import React from 'react'
 import { fetchMainPosts } from '../utils/api'
 import PostsList from './PostsList'
 import Loading from './Loading'
+import PropTypes from 'prop-types'
 
 export default class Posts extends React.Component {
   constructor(props) {
@@ -32,3 +33,6 @@ export default class Posts extends React.Component {
   }
 }
 
+Posts.propTypes = {
+  type: PropTypes.string.isRequired
+}

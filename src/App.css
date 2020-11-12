@@ -55,6 +55,15 @@ li {
   color: gray;
 }
 
+.meta-info-light a {
+    color: black;
+}
+
+.meta-info-light span {
+    margin: 10px 0;
+    margin-right: 6px;
+}
+
 .nav-link {
   font-size: 18px;
   font-weight: bold;

@@ -10,14 +10,7 @@ export default function Post({ author, title, created, comments, url, setUser}) 
         {title}
       </a>
       <div className='meta-info-light'>
-        <Link
-          to={{
-            pathname: `/user`,
-            search: `?id=${author}`
-          }}
-        >
-          {author}
-        </Link>
+        <span>by <Link to={`/user?id=${author}`}>{author}</Link></span>
         <span> on {formateDate(created)} </span>
         <span>with {comments} comments</span>
       </div>

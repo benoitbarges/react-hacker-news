@@ -1,8 +1,8 @@
 import React from 'react'
 import formateDate from '../utils/formateDate'
 import PostsList from './PostsList'
-import { fetchPosts, fetchUser } from '../utils/api'
 import Loading from './Loading'
+import { fetchPosts, fetchUser } from '../utils/api'
 import queryString from 'query-string'
 
 export default class User extends React.Component {

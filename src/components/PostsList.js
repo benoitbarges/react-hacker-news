@@ -1,5 +1,6 @@
 import React from 'react'
 import Post from './Post'
+import PropTypes from 'prop-types'
 
 export default function PostsList({ posts, setUser = null}) {
   return (
@@ -20,4 +21,8 @@ export default function PostsList({ posts, setUser = null}) {
       })}
     </ul>
   )
+}
+
+PostsList.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.object).isRequired
 }

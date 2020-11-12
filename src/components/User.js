@@ -2,6 +2,7 @@ import React from 'react'
 import formateDate from '../utils/formateDate'
 import PostsList from './PostsList'
 import { fetchPosts } from '../utils/api'
+import PropTypes from 'prop-types'
 
 export default class User extends React.Component {
   constructor(props) {
@@ -39,10 +40,13 @@ export default class User extends React.Component {
         {posts &&
           <PostsList posts={posts} />
         }
-        {posts &&
-          <pre>{JSON.stringify(posts, null, 2)}</pre>
-        }
       </div>
     )
   }
+}
+
+User.propTypes = {
+  username: PropTypes.string.isRequired,
+  created: PropTypes.number.isRequired,
+  karma: PropTypes.number.isRequired
 }

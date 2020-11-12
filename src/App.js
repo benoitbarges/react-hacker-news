@@ -1,15 +1,21 @@
 import './App.css';
 import Posts from './components/Posts'
 import Nav from './components/Nav'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div id="App">
-      <div  className='container'>
-        <Nav />
-        <Posts />
+    <Router>
+      <div id="App">
+        <div  className='container'>
+          <Nav />
+          <Switch>
+            <Route exact path='/' component={() => <Posts type='top'/>}/>
+            <Route exact path='/new' component={() => <Posts type='new'/>}/>
+          </Switch>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 

@@ -16,7 +16,7 @@ export default class Posts extends React.Component {
   }
 
   componentDidMount() {
-    fetchTopPosts().then(data => this.setState({ posts: data, loading: false, user: null }))
+    fetchTopPosts(this.props.type).then(data => this.setState({ posts: data, loading: false, user: null }))
   }
 
   setUser = (user) => {

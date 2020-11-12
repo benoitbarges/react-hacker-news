@@ -3,6 +3,7 @@ import formateDate from '../utils/formateDate'
 import PostsList from './PostsList'
 import { fetchPosts } from '../utils/api'
 import PropTypes from 'prop-types'
+import Loading from './Loading'
 
 export default class User extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ export default class User extends React.Component {
     const { posts, loading } = this.state
 
     if (loading) {
-      return <h1>Loading...</h1>
+      return <Loading text='Fetching User'/>
     }
 
     return (

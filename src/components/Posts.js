@@ -2,6 +2,7 @@ import React from 'react'
 import { fetchTopPosts, fetchUser } from '../utils/api'
 import PostsList from './PostsList'
 import User from './User'
+import Loading from './Loading'
 
 export default class Posts extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ export default class Posts extends React.Component {
     const { posts, loading, user } = this.state
 
     if (loading) {
-      return <h1>Loading...</h1>
+      return <Loading />
     }
 
     if (user) {

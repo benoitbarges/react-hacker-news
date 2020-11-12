@@ -1,6 +1,6 @@
 import React from 'react'
 import { fetchTopPosts, fetchUser } from '../utils/api'
-import Post from './Post'
+import PostsList from './PostsList'
 import User from './User'
 
 export default class Posts extends React.Component {
@@ -23,14 +23,13 @@ export default class Posts extends React.Component {
   }
 
   render() {
-    const { posts, loading } = this.state
+    const { posts, loading, user } = this.state
 
     if (loading) {
       return <h1>Loading...</h1>
     }
 
-    if (this.state.user) {
-      const { user } = this.state
+    if (user) {
       return (
         <User
           username={user.id}
@@ -43,23 +42,7 @@ export default class Posts extends React.Component {
 
     return (
       <div>
-        <ul>
-          {posts.map((post) => {
-            return (
-              <li key={post.id} className='post'>
-                <Post
-                  title={post.title}
-                  url={post.url}
-                  author={post.by}
-                  comments={post.descendants}
-                  created={post.time}
-                  setUser={() => this.setUser(post.by)}
-                />
-              </li>
-            )
-          })}
-        </ul>
-          <pre>{JSON.stringify(posts, null, 2)}</pre>
+        <PostsList posts={posts} setUser={(user) => this.setUser(user)} />
       </div>
     )
   }

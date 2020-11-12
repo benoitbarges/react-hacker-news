@@ -1,13 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import formateDate from '../utils/formateDate'
 
 export default function Post({ author, title, created, comments, url, setUser}) {
-
-  const date = new Date(created * 1000).toLocaleDateString("en-US", {
-    hour: 'numeric' ,
-    minute: 'numeric'
-  })
-
   return (
     <div className='post'>
       <a href={url} className='link'>
@@ -15,7 +10,7 @@ export default function Post({ author, title, created, comments, url, setUser}) 
       </a>
       <div className='meta-info-light'>
         <span>by <a href="#" onClick={setUser}>{author}</a></span>
-        <span> on {date} </span>
+        <span> on {formateDate(created)} </span>
         <span>with {comments} comments</span>
       </div>
     </div>

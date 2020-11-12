@@ -1,6 +1,7 @@
 import React from 'react'
 import PostInfos from './PostInfos'
 import Loading from './Loading'
+import Comment from './Comment'
 import queryString from 'query-string'
 import { fetchPost, fetchComments } from '../utils/api'
 
@@ -10,7 +11,8 @@ export default class Post extends React.Component {
 
     this.state = {
       post: null,
-      loading: true,
+      loadingPost: true,
+      loadingComments: true,
       comments: null
     }
   }
@@ -18,35 +20,50 @@ export default class Post extends React.Component {
   componentDidMount() {
     const { id } = queryString.parse(this.props.location.search)
     fetchPost(id).then((data) => {
-      this.setState({ post: data, loading: false })
+      this.setState({ post: data, loadingPost: false })
       return fetchComments(data.kids)
     })
-      .then(comments => this.setState({ comments}))
+      .then(comments => this.setState({ comments, loadingComments: false }))
   }
 
   render() {
-    const { post, loading } = this.state
+    const { post, loadingPost, loadingComments, comments } = this.state
+    console.log(comments)
 
-    if(loading) {
-      return <Loading />
-    }
+    // if(loadingPost && comments === null) {
+    //   return <Loading />
+    // }
 
     return (
-      <div className='post'>
-        <h1 className='header'>
-          <a href={post.url} target='_blank' rel="noreferrer" className='link'>
-            {post.title}
-          </a>
-        </h1>
-        <PostInfos
-          title={post.title}
-          url={post.url}
-          author={post.by}
-          comments={post.descendants}
-          created={post.time}
-          id={post.id}
-        />
-      </div>
+      <React.Fragment>
+        {loadingPost === true
+          ? <Loading />
+          : <React.Fragment>
+              <h1 className='header'>
+                <a href={post.url} target='_blank' rel="noreferrer" className='link'>
+                  {post.title}
+                </a>
+              </h1>
+              <PostInfos
+                title={post.title}
+                author={post.by}
+                comments={post.descendants}
+                created={post.time}
+                id={post.id}
+              />
+            </React.Fragment>}
+        {loadingComments === true
+          ? loadingPost === false && <Loading text='Fetching comments' />
+          : <React.Fragment>
+              {comments.map((comment) =>
+                <Comment
+                  author={comment.by}
+                  content={comment.text}
+                  created={comment.time}
+                />
+              )}
+            </React.Fragment>}
+      </React.Fragment>
     )
   }
 }

@@ -13,7 +13,6 @@ export default function PostsList({ posts, setUser = null}) {
             </a>
             <PostInfos
               title={post.title}
-              url={post.url}
               author={post.by}
               comments={post.descendants}
               created={post.time}

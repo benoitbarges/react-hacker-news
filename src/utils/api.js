@@ -5,7 +5,7 @@ export const fetchMainPosts = (type) => {
     .then(ids => Promise.all(ids.map(id => fetchPost(id))))
 }
 
-const fetchPost = (postId) => {
+export const fetchPost = (postId) => {
   return fetch(`https://hacker-news.firebaseio.com/v0/item/${postId}.json?print=pretty`)
     .then(response => response.json())
     .then(post => post)
@@ -21,4 +21,10 @@ export const fetchUser = (user) => {
   return fetch(`https://hacker-news.firebaseio.com/v0/user/${user}.json?print=pretty`)
     .then(response => response.json())
     .then(user => user)
+}
+
+export const fetchComments = (ids) => {
+  return Promise.all(ids.map(id => fetchPost(id)))
+    .then(data => data.filter(({ type }) => type === 'comment'))
+    .then(data => data.filter(({ dead }) => dead !== true))
 }

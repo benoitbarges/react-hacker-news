@@ -18,7 +18,7 @@ export default class Posts extends React.Component {
   }
 
   render() {
-    const { posts, loading, user } = this.state
+    const { posts, loading } = this.state
 
     if (loading) {
       return <Loading />

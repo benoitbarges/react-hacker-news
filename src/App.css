@@ -54,3 +54,14 @@ li {
   margin-top: 5px;
   color: gray;
 }
+
+.nav-link {
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav li {
+    margin-right: 10px;
+}

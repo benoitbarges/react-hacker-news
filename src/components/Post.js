@@ -21,7 +21,7 @@ export default class Post extends React.Component {
     const { id } = queryString.parse(this.props.location.search)
     fetchPost(id).then((data) => {
       this.setState({ post: data, loadingPost: false })
-      return fetchComments(data.kids)
+      return fetchComments(data.kids || [])
     })
       .then(comments => this.setState({ comments, loadingComments: false }))
   }

@@ -16,6 +16,12 @@ li {
   list-style-type: none;
 }
 
+#root {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -56,12 +62,17 @@ li {
 }
 
 .meta-info-light a {
-    color: black;
+  color: black;
 }
 
 .meta-info-light span {
-    margin: 10px 0;
-    margin-right: 6px;
+  margin: 10px 0;
+  margin-right: 6px;
+}
+
+.meta-info-dark {
+  margin-top: 5px;
+  color: gray;
 }
 
 .nav-link {
@@ -94,4 +105,9 @@ li {
   color: #DADADA;
   background: #1c2022;
   min-height: 100%;
+}
+
+.btn-clear {
+  border: none;
+  background: transparent;
 }

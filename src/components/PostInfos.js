@@ -8,7 +8,7 @@ export default function PostInfos({ author, title, created, comments, id}) {
       <div className='meta-info-light'>
         <span>by <Link to={`/user?id=${author}`}>{author}</Link></span>
         <span> on {formateDate(created)} </span>
-        {comments && <span>with <Link to={`/post?id=${id}`}>{comments} comments</Link></span>}
+        {<span>with <Link to={`/post?id=${id}`}>{comments} comments</Link></span>}
       </div>
   )
 }

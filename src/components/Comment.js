@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import formateDate from '../utils/formateDate'
+import PropTypes from 'prop-types'
 
 export default function Comment({ author, content, created}) {
   return (
@@ -12,4 +13,10 @@ export default function Comment({ author, content, created}) {
       </div>
     </div>
   )
+}
+
+Comment.propTypes = {
+  author: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  created: PropTypes.number.isRequired
 }

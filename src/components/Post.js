@@ -30,10 +30,6 @@ export default class Post extends React.Component {
     const { post, loadingPost, loadingComments, comments } = this.state
     console.log(comments)
 
-    // if(loadingPost && comments === null) {
-    //   return <Loading />
-    // }
-
     return (
       <React.Fragment>
         {loadingPost === true

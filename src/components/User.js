@@ -19,10 +19,10 @@ export default class User extends React.Component {
   componentDidMount() {
     const { id } = queryString.parse(this.props.location.search)
     fetchUser(id).then((data) => {
-      this.setState({ user: data, loading: false })
+      this.setState({ user: data })
       return fetchPosts(data.submitted)
     })
-      .then(posts => this.setState({ posts }))
+      .then(posts => this.setState({ posts, loading: false }))
   }
 
   render() {

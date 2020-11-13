@@ -24,7 +24,11 @@ export default class Nav extends React.Component {
                 </NavLink>
               </li>
             </ul>
-            <button className='btn-clear' style={{fontSize: 30}}>
+            <button
+              className='btn-clear'
+              style={{fontSize: 30}}
+              onClick={toggleTheme}
+            >
               {theme === 'light' ? '🔦' : '💡'}
             </button>
           </nav>

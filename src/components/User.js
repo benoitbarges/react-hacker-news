@@ -4,6 +4,7 @@ import PostsList from './PostsList'
 import Loading from './Loading'
 import { fetchPosts, fetchUser } from '../utils/api'
 import queryString from 'query-string'
+import { ThemeConsumer } from '../contexts/theme'
 
 export default class User extends React.Component {
   constructor(props) {
@@ -33,20 +34,24 @@ export default class User extends React.Component {
     }
 
     return (
-      <div>
-        <h1 className='header'>
-          {user.id}
-        </h1>
-        <div className='meta-info-light'>
-          <span>joined <b>{formateDate(user.created)}</b> </span>
-          <span>has <b>{user.karma}</b> karma </span>
-        </div>
-        <h2>Posts</h2>
-        {posts
-          ? <PostsList posts={posts} />
-          : <Loading text='Fetching Posts' />
-        }
-      </div>
+      <ThemeConsumer>
+        {({ theme }) => (
+          <div>
+            <h1 className='header'>
+              {user.id}
+            </h1>
+            <div className={`meta-info-${theme}`}>
+              <span>joined <b>{formateDate(user.created)}</b> </span>
+              <span>has <b>{user.karma}</b> karma </span>
+            </div>
+            <h2>Posts</h2>
+            {posts
+              ? <PostsList posts={posts} />
+              : <Loading text='Fetching Posts' />
+            }
+          </div>
+        )}
+      </ThemeConsumer>
     )
   }
 }

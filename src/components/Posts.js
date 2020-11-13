@@ -18,6 +18,12 @@ export default class Posts extends React.Component {
     this.handleFetch()
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.type !== this.props.type) {
+      this.handleFetch()
+    }
+  }
+
   handleFetch = () => {
     fetchMainPosts(this.props.type).then(data => this.setState({ posts: data, loading: false }))
   }

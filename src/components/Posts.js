@@ -15,6 +15,10 @@ export default class Posts extends React.Component {
   }
 
   componentDidMount() {
+    this.handleFetch()
+  }
+
+  handleFetch = () => {
     fetchMainPosts(this.props.type).then(data => this.setState({ posts: data, loading: false }))
   }
 

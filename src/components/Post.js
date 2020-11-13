@@ -52,6 +52,7 @@ export default class Post extends React.Component {
           : <React.Fragment>
               {comments.map((comment) =>
                 <Comment
+                  key={comment.id}
                   author={comment.by}
                   content={comment.text}
                   created={comment.time}

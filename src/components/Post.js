@@ -28,7 +28,6 @@ export default class Post extends React.Component {
 
   render() {
     const { post, loadingPost, loadingComments, comments } = this.state
-    console.log(comments)
 
     return (
       <React.Fragment>

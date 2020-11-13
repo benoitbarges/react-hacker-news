@@ -89,3 +89,9 @@ li {
 .center-text {
   text-align: center;
 }
+
+.dark {
+  color: #DADADA;
+  background: #1c2022;
+  min-height: 100%;
+}
